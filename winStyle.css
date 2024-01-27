@@ -1,0 +1,27 @@
+body{
+    background-size: cover;
+    background-image: url('https://i.pinimg.com/originals/e2/be/84/e2be843882fa6768bffb651620630ae6.jpg');
+    background-repeat:no repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+
+}
+button{
+    width:560px;
+    height:65px;  
+    font-size:27px;
+    margin-top: 20px;
+    margin-bottom:20px;
+    color:white;
+}
+h1{
+    color:white;
+    font-size:100px;
+}
+div{
+    text-align:center;
+    width:560px;
+    margin-top:5%;
+}
