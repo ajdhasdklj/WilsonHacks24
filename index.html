@@ -9,31 +9,35 @@
 
 <DIV id="screen">
     <H1 id="randomItemHeader" >Crafting Table</H1>
-    <h1>Stopwatch</h1>
-  <p id="stopwatch">0:00</p>
+    <h1>Timer</h1>
+    <p id="timer">00:30</p>
 
-    <script>
-        // stopwatch.js
+  <script>
+        var timeLeft = 30; // Set the initial time in seconds
+        var timerInterval;
 
-var stopwatchElement = document.getElementById('stopwatch');
-var startTime = new Date().getTime();
-var elapsedTime = 0; // New variable to store elapsed time
+        function startTimer() {
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    window.location.href = "lose.html"; // Redirect to another page
+                } else {
+                    updateTimerDisplay();
+                }
+            }, 1000); // Update every second
+        }
 
-function updateStopwatch() {
-  var currentTime = new Date().getTime();
-  elapsedTime = currentTime - startTime;
-  var seconds = Math.floor(elapsedTime / 1000);
-  var minutes = Math.floor(seconds / 60);
-  seconds %= 60;
+        function updateTimerDisplay() {
+            var minutes = Math.floor(timeLeft / 60);
+            var seconds = timeLeft % 60;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            document.getElementById('timer').innerHTML = '00:' + seconds;
+        }
 
-  var secondsStr = seconds < 10 ? '0' + seconds : '' + seconds;
-  stopwatchElement.textContent = minutes + ':' + secondsStr;
+        // Start the timer when the page loads
+        startTimer();
 
-  setTimeout(updateStopwatch, 1000);
-}
-
-// Start the stopwatch when the script is loaded
-updateStopwatch();
 
 // Function to get the elapsed time
 function getElapsedTime() {
